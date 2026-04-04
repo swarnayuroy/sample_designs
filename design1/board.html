@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="shared-style.css" />
+        <link rel="stylesheet" href="board-style.css" />
+        <link rel="stylesheet" href="toast-message-style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css" />
+        <script src="board.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="page_toast_notification">
+        <!-- <div class="page_toast_notification_content">
+            <i class="fa fa-triangle-exclamation" style="font-size: 22px;"></i>
+            <div class="page_toast_notification_message">
+                <p class="page_toast_notification_text">Oops! Internal server error.</p>
+            </div>
+        </div> -->
+        <div class="page_toast_notification_content">
+            <i class="fa-solid fa-circle-check"></i>
+            <div class="page_toast_notification_message">
+                <p class="page_toast_notification_text">Account successfully verified.</p>
+            </div>
+        </div>
+        <button class="page_toast_notification_close_btn" onclick="hideToast()">
+            <i class="fa-solid fa-circle-xmark" style="font-size: 15px;"></i>
+        </button>
+        <script type="text/javascript">
+            setTimeout(hideToast, 5000)
+        </script>
+        </div>
+        <div class="board-layout">
+            <div class="board-head-layout">
+                <div class="board-nav-section">
+                    <a href="" class="board-logo">
+                        <i class="fa-solid fa-list-check"></i> <span id="logo-text">Task Board</span>
+                    </a>
+                    <a href="" class="board-nav">
+                        <span>Board</span>
+                    </a>
+                    <a href="" class="board-nav">
+                        <span>Calendar</span>
+                    </a>
+                    <a href="" class="board-nav">
+                        <span>Report</span>
+                    </a>
+                    <div class="create-action">
+                        <button id="create-btn" onclick="toggleCreateDropdown()">Create +</button>
+                        <div class="create-section">
+                            <a href="#">Create Topic ></a>
+                            <a href="#">Create Task >></a>
+                        </div> 
+                    </div>
+                    <div class="board-topic-selection">
+                        <select id="board-topic-select">
+                            <option value="0">--Select Topic--</option>
+                            <option value="topic1">Kedarnath Trip</option>
+                            <option value="topic2">Home Relocation</option>
+                        </select>
+                        <!-- <span class="topic-type-icon" style="cursor: pointer; font-size: 20px;"><i class="fa-solid fa-users"></i></span> -->
+                        <span class="topic-type-icon" style="cursor: pointer; font-size: 20px;"><i class="fa-solid fa-user"></i></span>
+                    </div>
+                </div>
+                <div class="board-profile">
+                    <button class="board-profile-notification" onclick="toggleNotificationDropdown()">
+                        <div class="board-profile-notification_count">
+                            <p class="board-profile-notification_count_text">2</p>
+                        </div>
+                        <i class="fa-solid fa-bell" style="color: black; font-size: 20px;"></i>                        
+                    </button>
+                    <!-- <button class="board-profile-notification">
+                        <i class="fa-regular fa-bell" style="color: gray; font-size: 20px;"></i>
+                    </button> -->
+                    <div class="board-profile-notification_dropdown">
+                        <p>Notification 1</p>
+                        <p>Notification 2</p>
+                    </div>                    
+                    <button class="board-profile-icon" onclick="toggleIconDropdown()">
+                        <p class="board-profile-name_icon">JD</p>
+                    </button>
+                    <div class="board-profile-icon_dropdown">
+                        <a href="#">
+                            <i class="fa-solid fa-key" style="color: black;"></i>
+                            Change Password                            
+                        </a>
+                        <a href="#">
+                            <i class="fa-solid fa-power-off" style="color: black;"></i>
+                            Logout                            
+                        </a>
+                    </div>                    
+                </div>
+            </div>            
+            <div class="board-task-layout">
+                <div class="board-task-column" id="board-task-created">
+                    <p class="board-task-column_label">Created</p>
+                    <div class="board-task-list">
+
+                    </div>
+                </div>
+                <div class="board-task-column" id="board-task-toDo">
+                    <p class="board-task-column_label">To Do</p>
+                    <div class="board-task-list">
+
+                    </div>
+                </div>
+                <div class="board-task-column" id="board-task-inProgress">
+                    <p class="board-task-column_label">In Progress</p>
+                    <div class="board-task-list">
+
+                    </div>
+                </div>
+                <div class="board-task-column" id="board-task-completed">
+                    <p class="board-task-column_label">Completed</p>
+                    <div class="board-task-list">
+
+                    </div>
+                </div>
+                <div class="board-task-column" id="board-task-onHold">
+                    <p class="board-task-column_label">On Hold</p>
+                    <div class="board-task-list" id="board-task-onHold_list">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
