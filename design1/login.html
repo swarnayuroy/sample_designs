@@ -118,10 +118,37 @@
             <div class="form_otp_container">
                 <label class="form_otp_label">Enter OTP</label>
                 <div class="form_otp_input">
-                    <input type="text" name="otp" autocomplete="off" required  style="text-align: center;"/>
+                    <input type="text" name="otp" autocomplete="off" required style="text-align: center;" />
                 </div>
                 <p class="form_validation_message"><span>OTP validation</span></p>
-                <p class="resend_otp"><a href="" class="resend_otp_link">Resend OTP</a></p>
+                <p class="resend_otp">
+                    <span id="timer">30</span>
+                    <a href="" class="resend_otp_link">Resend OTP</a>
+                </p>
+
+                <script>
+                    const timerElement = document.getElementById('timer');
+                    const resendLink = document.querySelector('.resend_otp_link');
+
+                    let timeLeft = parseInt(timerElement.innerHTML);
+
+                    const countdown = setInterval(() => {
+                        if (timeLeft <= 0) {
+                            clearInterval(countdown);
+
+                            timerElement.style.display = 'none';
+                            resendLink.style.display = 'inline'; 
+                        } else {
+                            if (timeLeft === 1) {
+                                timerElement.innerHTML = `1 second remaining`;
+                            } else {
+                                timerElement.innerHTML = `${timeLeft} seconds remaining`;
+                            }
+                        }
+
+                        timeLeft -= 1;
+                    }, 1000);
+                </script>
             </div>
 
             <!-- <div class="form_setPassword_container">
