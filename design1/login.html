@@ -122,7 +122,7 @@
                 </div>
                 <p class="form_validation_message"><span>OTP validation</span></p>
                 <p class="resend_otp">
-                    <span id="timer">30</span>
+                    <span id="timer">00:30</span>
                     <a href="" class="resend_otp_link">Resend OTP</a>
                 </p>
 
@@ -130,7 +130,7 @@
                     const timerElement = document.getElementById('timer');
                     const resendLink = document.querySelector('.resend_otp_link');
 
-                    let timeLeft = parseInt(timerElement.innerHTML);
+                    let timeLeft = parseInt(timerElement.innerHTML.split(':')[1]);
 
                     const countdown = setInterval(() => {
                         if (timeLeft <= 0) {
@@ -139,11 +139,11 @@
                             timerElement.style.display = 'none';
                             resendLink.style.display = 'inline'; 
                         } else {
-                            if (timeLeft === 1) {
-                                timerElement.innerHTML = `1 second remaining`;
+                            if (timeLeft < 10) {
+                                timerElement.innerHTML = `00:0${timeLeft}`;
                             } else {
-                                timerElement.innerHTML = `${timeLeft} seconds remaining`;
-                            }
+                                timerElement.innerHTML = `00:${timeLeft}`;
+                            }                            
                         }
 
                         timeLeft -= 1;
